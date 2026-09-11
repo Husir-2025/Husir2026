@@ -1,0 +1,1179 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>胡浩 · 个人主页 | HU HAO</title>
+<meta name="description" content="胡浩的自我介绍主页 —— 西安建筑科技大学土木工程硕士研究生，专注混凝土耐久性研究，深耕学生工作与青年服务。">
+<link rel="preconnect" href="https://miaoda.feishu.cn">
+<link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=Orbitron:wght@500;600;700;800&family=Share+Tech+Mono&family=Noto+Sans+SC:wght@300;400;500;700&display=swap">
+<style>
+/* ============================================================
+   1. Design Tokens —— 科技未来 / 工程蓝图
+   ============================================================ */
+:root{
+  --bg-0:#04080F;
+  --bg-1:#060D19;
+  --bg-2:#0A1426;
+  --bg-3:#0E1B31;
+  --line:rgba(64,224,196,.14);
+  --line-strong:rgba(64,224,196,.32);
+  --cyan:#2EE6C8;
+  --cyan-soft:#8BF0E0;
+  --blue:#4A8DFF;
+  --amber:#FFC24B;
+  --text:#EAF3FF;
+  --text-2:#93A7C7;
+  --text-3:#5E7396;
+  --font-display:'Orbitron','Noto Sans SC',sans-serif;
+  --font-mono:'Share Tech Mono',ui-monospace,monospace;
+  --font-body:'Noto Sans SC',-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;
+  --nav-h:64px;
+  --maxw:1120px;
+  --radius:14px;
+  --ease:cubic-bezier(.22,.61,.36,1);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--bg-1);
+  color:var(--text);
+  font-family:var(--font-body);
+  line-height:1.7;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+::selection{background:rgba(46,230,200,.28);color:#fff;}
+a{color:inherit;text-decoration:none;}
+
+/* ============================================================
+   2. 全局签名元素 —— CAD 工程网格 + 扫描线
+   ============================================================ */
+body::before{
+  content:"";
+  position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:
+    linear-gradient(rgba(64,224,196,.05) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(64,224,196,.05) 1px,transparent 1px);
+  background-size:56px 56px;
+  mask-image:radial-gradient(ellipse 90% 80% at 50% 0%,#000 40%,transparent 100%);
+  -webkit-mask-image:radial-gradient(ellipse 90% 80% at 50% 0%,#000 40%,transparent 100%);
+}
+.scanline{
+  position:fixed;left:0;right:0;height:120px;z-index:1;pointer-events:none;
+  background:linear-gradient(180deg,transparent,rgba(46,230,200,.05),transparent);
+  animation:scan 9s linear infinite;
+}
+@keyframes scan{
+  0%{top:-140px;}
+  100%{top:110vh;}
+}
+@media (prefers-reduced-motion:reduce){
+  .scanline{animation:none;display:none;}
+  html{scroll-behavior:auto;}
+}
+
+/* 章节眉标：工程坐标式编号 */
+.sec-head{
+  display:flex;align-items:baseline;gap:18px;margin-bottom:14px;
+}
+.sec-code{
+  font-family:var(--font-mono);
+  font-size:15px;color:var(--cyan);
+  letter-spacing:.14em;
+  white-space:nowrap;
+}
+.sec-code::before{content:"[";color:var(--text-3);}
+.sec-code::after{content:"]";color:var(--text-3);}
+.sec-title{
+  font-size:clamp(26px,4vw,38px);
+  font-weight:700;letter-spacing:.06em;
+}
+.sec-line{flex:1;height:1px;background:linear-gradient(90deg,var(--line-strong),transparent);}
+
+/* 章节容器 */
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px;position:relative;z-index:2;}
+section{padding:96px 0;position:relative;z-index:2;}
+
+/* 滚动渐入 */
+.reveal{opacity:0;transform:translateY(34px);transition:opacity .8s var(--ease),transform .8s var(--ease);}
+.reveal.in{opacity:1;transform:none;}
+.reveal-d1{transition-delay:.08s;}
+.reveal-d2{transition-delay:.16s;}
+.reveal-d3{transition-delay:.24s;}
+@media (prefers-reduced-motion:reduce){
+  .reveal{opacity:1;transform:none;transition:none;}
+}
+
+/* 卡片基础 */
+.card{
+  background:linear-gradient(160deg,rgba(14,27,49,.92),rgba(8,16,30,.92));
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  position:relative;
+  overflow:hidden;
+}
+.card::after{
+  content:"";position:absolute;left:0;top:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(46,230,200,.55),transparent);
+}
+
+/* ============================================================
+   3. 顶部导航
+   ============================================================ */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;height:var(--nav-h);
+  display:flex;align-items:center;
+  background:rgba(4,9,18,.62);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid transparent;
+  transition:border-color .3s,background .3s;
+}
+.nav.scrolled{border-bottom-color:var(--line);background:rgba(4,9,18,.85);}
+.nav-inner{
+  max-width:var(--maxw);margin:0 auto;padding:0 28px;width:100%;
+  display:flex;align-items:center;justify-content:space-between;gap:20px;
+}
+.brand{display:flex;align-items:center;gap:12px;}
+.brand-logo{
+  width:38px;height:38px;border-radius:9px;
+  object-fit:cover;border:1px solid var(--line-strong);
+  box-shadow:0 0 18px rgba(46,230,200,.22);
+}
+.brand-name{font-family:var(--font-display);font-weight:700;font-size:17px;letter-spacing:.12em;color:var(--text);}
+.brand-name em{font-style:normal;color:var(--cyan);}
+.nav-links{display:flex;align-items:center;gap:6px;list-style:none;}
+.nav-links a{
+  display:inline-flex;align-items:center;min-height:44px;padding:0 14px;
+  font-size:14.5px;color:var(--text-2);letter-spacing:.05em;
+  transition:color .25s;
+  position:relative;
+}
+.nav-links a::after{
+  content:"";position:absolute;left:14px;right:14px;bottom:8px;height:2px;
+  background:var(--cyan);transform:scaleX(0);transform-origin:left;
+  transition:transform .3s var(--ease);
+}
+.nav-links a:hover{color:var(--text);}
+.nav-links a:hover::after{transform:scaleX(1);}
+.nav-cta{
+  min-height:44px;display:inline-flex;align-items:center;gap:8px;
+  padding:0 18px;border:1px solid var(--line-strong);border-radius:8px;
+  color:var(--cyan);font-size:14px;letter-spacing:.08em;
+  transition:background .3s,box-shadow .3s;
+}
+.nav-cta:hover{background:rgba(46,230,200,.1);box-shadow:0 0 20px rgba(46,230,200,.25);}
+.menu-btn{display:none;width:44px;height:44px;border:1px solid var(--line);border-radius:8px;background:transparent;color:var(--text);cursor:pointer;}
+
+/* ============================================================
+   4. Hero
+   ============================================================ */
+.hero{
+  min-height:100vh;
+  display:flex;align-items:center;
+  position:relative;z-index:2;
+  padding:calc(var(--nav-h) + 40px) 0 80px;
+  overflow:hidden;
+}
+.hero-bg{
+  position:absolute;inset:0;z-index:-1;
+  background:
+    linear-gradient(180deg,rgba(4,8,15,.55) 0%,rgba(4,8,15,.72) 55%,var(--bg-1) 100%),
+    url('https://aka.doubaocdn.com/s/JyEhZM1brw') center 30%/cover no-repeat;
+}
+.hero-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:48px;align-items:center;}
+.hero-kicker{
+  font-family:var(--font-mono);font-size:14px;letter-spacing:.22em;color:var(--cyan);
+  display:flex;align-items:center;gap:12px;margin-bottom:22px;
+}
+.hero-kicker::before{content:"";width:34px;height:1px;background:var(--cyan);}
+.hero-name{
+  font-family:var(--font-display);
+  font-size:clamp(44px,7.5vw,84px);
+  font-weight:800;line-height:1.06;letter-spacing:.04em;
+  margin-bottom:10px;
+}
+.hero-name .zh{color:var(--text);}
+.hero-name .en{display:block;font-size:.52em;font-weight:600;color:var(--text-2);letter-spacing:.3em;margin-top:6px;}
+.hero-role{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:9px 18px;margin:22px 0 18px;
+  border:1px solid var(--line-strong);border-radius:999px;
+  background:rgba(46,230,200,.07);
+  font-size:15.5px;color:var(--cyan-soft);letter-spacing:.06em;
+}
+.hero-role .dot{width:7px;height:7px;border-radius:50%;background:var(--cyan);box-shadow:0 0 10px var(--cyan);animation:pulse 2.2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:.35;}}
+.hero-desc{
+  font-size:17px;color:var(--text-2);max-width:560px;font-weight:300;
+  letter-spacing:.03em;
+}
+.hero-desc strong{color:var(--text);font-weight:500;}
+.hero-actions{display:flex;gap:14px;margin-top:36px;flex-wrap:wrap;}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  min-height:48px;padding:0 26px;border-radius:9px;
+  font-size:15px;letter-spacing:.08em;font-family:var(--font-body);cursor:pointer;
+  transition:transform .25s var(--ease),box-shadow .25s,background .25s;
+}
+.btn-primary{
+  background:linear-gradient(120deg,var(--cyan),#17b8a6);
+  color:#04211d;font-weight:700;
+  box-shadow:0 0 26px rgba(46,230,200,.35);
+}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 34px rgba(46,230,200,.45);}
+.btn-ghost{
+  border:1px solid var(--line-strong);color:var(--cyan-soft);background:rgba(46,230,200,.04);
+}
+.btn-ghost:hover{transform:translateY(-2px);background:rgba(46,230,200,.12);}
+.btn svg{flex:none;}
+
+/* hero 数据面板 */
+.hero-panel{display:flex;flex-direction:column;gap:14px;}
+.hstat{
+  padding:20px 22px;
+  background:linear-gradient(160deg,rgba(14,27,49,.85),rgba(8,16,30,.85));
+  border:1px solid var(--line);border-radius:var(--radius);
+  backdrop-filter:blur(8px);
+  display:flex;align-items:center;gap:18px;
+  transition:transform .3s var(--ease),border-color .3s;
+}
+.hstat:hover{transform:translateY(-3px);border-color:var(--line-strong);}
+.hstat-ico{
+  width:46px;height:46px;flex:none;border-radius:11px;
+  background:rgba(46,230,200,.1);border:1px solid var(--line);
+  display:flex;align-items:center;justify-content:center;color:var(--cyan);
+}
+.hstat b{
+  display:block;font-family:var(--font-display);font-size:22px;font-weight:700;color:var(--text);
+  letter-spacing:.04em;
+}
+.hstat span{font-size:13.5px;color:var(--text-2);letter-spacing:.04em;}
+.hstat .misc{font-family:var(--font-mono);font-size:12px;color:var(--text-3);margin-left:auto;letter-spacing:.1em;}
+
+/* 滚动提示 */
+.scroll-hint{
+  position:absolute;left:50%;bottom:26px;transform:translateX(-50%);
+  font-family:var(--font-mono);font-size:12px;letter-spacing:.3em;color:var(--text-3);
+  display:flex;flex-direction:column;align-items:center;gap:10px;
+}
+.scroll-hint::after{
+  content:"";width:1px;height:44px;
+  background:linear-gradient(180deg,var(--cyan),transparent);
+  animation:drop 2s ease-in-out infinite;
+}
+@keyframes drop{0%{transform:scaleY(0);transform-origin:top;}50%{transform:scaleY(1);transform-origin:top;}51%{transform-origin:bottom;}100%{transform:scaleY(0);transform-origin:bottom;}}
+
+/* ============================================================
+   5. 关于我
+   ============================================================ */
+.about-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:44px;align-items:start;}
+.avatar-card{padding:30px;text-align:center;}
+.avatar-card img{
+  width:170px;height:170px;border-radius:20px;object-fit:cover;
+  border:1px solid var(--line-strong);
+  box-shadow:0 0 40px rgba(46,230,200,.18);
+  margin-bottom:20px;
+}
+.avatar-card .a-name{font-family:var(--font-display);font-size:21px;font-weight:700;letter-spacing:.1em;}
+.avatar-card .a-sub{font-family:var(--font-mono);font-size:12.5px;color:var(--cyan);letter-spacing:.14em;margin:6px 0 18px;}
+.avatar-tags{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;}
+.tag{
+  font-size:12.5px;padding:5px 13px;border-radius:999px;
+  border:1px solid var(--line);color:var(--text-2);
+  background:rgba(10,20,38,.6);
+  letter-spacing:.05em;
+}
+.about-text p{color:var(--text-2);font-size:16px;font-weight:300;margin-bottom:16px;letter-spacing:.02em;}
+.about-text p strong{color:var(--text);font-weight:500;}
+.about-text .lead{font-size:17.5px;color:var(--text);}
+.about-text .lead .hl{color:var(--cyan);}
+.about-facts{
+  display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:26px;
+}
+.fact{display:flex;align-items:center;gap:12px;padding:14px 16px;}
+.fact .f-ico{width:38px;height:38px;flex:none;border-radius:9px;background:rgba(46,230,200,.09);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;color:var(--cyan);}
+.fact .f-lab{display:block;font-size:11.5px;color:var(--text-3);letter-spacing:.1em;}
+.fact .f-val{display:block;font-size:15px;color:var(--text);letter-spacing:.02em;}
+
+/* ============================================================
+   6. 教育 / 成长时间线
+   ============================================================ */
+.timeline{position:relative;margin-top:26px;padding-left:34px;}
+.timeline::before{
+  content:"";position:absolute;left:8px;top:6px;bottom:6px;width:1px;
+  background:linear-gradient(180deg,var(--cyan),rgba(46,230,200,.05));
+}
+.t-item{position:relative;padding:0 0 34px 26px;}
+.t-item:last-child{padding-bottom:0;}
+.t-item::before{
+  content:"";position:absolute;left:-31px;top:8px;width:11px;height:11px;border-radius:50%;
+  background:var(--bg-1);border:2px solid var(--cyan);
+  box-shadow:0 0 14px rgba(46,230,200,.6);
+}
+.t-year{font-family:var(--font-mono);font-size:13px;color:var(--cyan);letter-spacing:.14em;margin-bottom:6px;}
+.t-role{font-size:19px;font-weight:700;color:var(--text);letter-spacing:.04em;margin-bottom:4px;}
+.t-org{font-size:14.5px;color:var(--text-2);margin-bottom:8px;}
+.t-org em{font-style:normal;color:var(--blue);}
+.t-desc{font-size:14.5px;color:var(--text-2);font-weight:300;line-height:1.8;}
+.t-desc ul{list-style:none;display:flex;flex-direction:column;gap:4px;margin-top:8px;}
+.t-desc li{position:relative;padding-left:16px;}
+.t-desc li::before{content:"▸";position:absolute;left:0;color:var(--cyan);}
+
+/* 实践经历子卡片 */
+.practice-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:30px;}
+.p-card{padding:20px 22px;}
+.p-card .p-tag{
+  display:inline-block;font-family:var(--font-mono);font-size:11px;color:var(--cyan);
+  letter-spacing:.14em;border:1px solid var(--line);padding:3px 10px;border-radius:5px;
+  background:rgba(46,230,200,.06);margin-bottom:12px;
+}
+.p-card h4{font-size:16px;font-weight:700;color:var(--text);letter-spacing:.04em;margin-bottom:4px;}
+.p-card .p-place{font-size:13px;color:var(--blue);margin-bottom:10px;letter-spacing:.03em;}
+.p-card p{font-size:13.5px;color:var(--text-2);font-weight:300;line-height:1.8;}
+
+/* ============================================================
+   7. 研究方向与技能
+   ============================================================ */
+.research-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:stretch;}
+.research-main{display:flex;flex-direction:column;gap:18px;}
+.r-card{padding:26px 28px;}
+.r-card .r-ico{
+  width:44px;height:44px;border-radius:11px;margin-bottom:16px;
+  background:rgba(46,230,200,.1);border:1px solid var(--line);
+  display:flex;align-items:center;justify-content:center;color:var(--cyan);
+}
+.r-card h3{font-size:18px;font-weight:700;color:var(--text);letter-spacing:.05em;margin-bottom:8px;}
+.r-card p{font-size:14.5px;color:var(--text-2);font-weight:300;line-height:1.85;}
+.r-card .r-badge{
+  display:inline-block;margin-top:14px;font-family:var(--font-mono);font-size:12px;
+  color:var(--cyan);letter-spacing:.12em;border:1px solid var(--line);
+  padding:4px 12px;border-radius:6px;background:rgba(46,230,200,.06);
+}
+.research-visual{position:relative;min-height:420px;border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);}
+.research-visual img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;}
+.research-visual .overlay{
+  position:absolute;inset:0;z-index:1;
+  background:linear-gradient(180deg,rgba(6,13,25,.15),rgba(6,13,25,.88));
+  display:flex;flex-direction:column;justify-content:flex-end;padding:26px;
+}
+.research-visual .ov-code{font-family:var(--font-mono);font-size:12px;color:var(--cyan);letter-spacing:.18em;margin-bottom:8px;}
+.research-visual .ov-title{font-size:19px;font-weight:700;color:#fff;letter-spacing:.04em;}
+
+/* 技能条 */
+.skills{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:40px;}
+.skill{padding:22px 24px;}
+.skill-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:12px;}
+.skill-name{font-size:15px;color:var(--text);letter-spacing:.05em;}
+.skill-val{font-family:var(--font-mono);font-size:13px;color:var(--cyan);}
+.skill-bar{height:5px;border-radius:3px;background:rgba(64,224,196,.12);overflow:hidden;}
+.skill-bar i{display:block;height:100%;border-radius:3px;background:linear-gradient(90deg,var(--blue),var(--cyan));box-shadow:0 0 12px rgba(46,230,200,.4);width:0;transition:width 1.4s var(--ease);}
+
+/* ============================================================
+   8. 学生工作 / 实践经历
+   ============================================================ */
+.work-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:40px;align-items:stretch;}
+.work-visual{position:relative;min-height:420px;border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);}
+.work-visual img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;}
+.work-visual .overlay{
+  position:absolute;inset:0;z-index:1;
+  background:linear-gradient(180deg,rgba(6,13,25,.15),rgba(6,13,25,.9));
+  display:flex;flex-direction:column;justify-content:flex-end;padding:26px;
+}
+.work-cards{display:flex;flex-direction:column;gap:16px;}
+.w-card{padding:22px 26px;display:flex;gap:18px;align-items:flex-start;}
+.w-num{
+  font-family:var(--font-display);font-size:26px;font-weight:700;color:transparent;
+  -webkit-text-stroke:1px var(--cyan);flex:none;line-height:1;
+  margin-top:4px;
+}
+.w-card h3{font-size:17px;font-weight:700;color:var(--text);letter-spacing:.04em;margin-bottom:4px;}
+.w-card .w-meta{font-family:var(--font-mono);font-size:12px;color:var(--text-3);letter-spacing:.1em;margin-bottom:8px;}
+.w-card p{font-size:14px;color:var(--text-2);font-weight:300;line-height:1.8;}
+
+/* ============================================================
+   9. 荣誉 / 数据
+   ============================================================ */
+.honor-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:10px;}
+.h-card{padding:30px 26px;text-align:center;}
+.h-card .h-num{
+  font-family:var(--font-display);font-size:clamp(34px,4.5vw,48px);font-weight:800;
+  color:var(--cyan);text-shadow:0 0 26px rgba(46,230,200,.45);
+  line-height:1.1;
+}
+.h-card .h-unit{font-family:var(--font-mono);font-size:13px;color:var(--text-3);letter-spacing:.12em;}
+.h-card h4{font-size:15.5px;color:var(--text);font-weight:500;margin:10px 0 6px;letter-spacing:.05em;}
+.h-card p{font-size:13px;color:var(--text-2);font-weight:300;line-height:1.7;}
+.h-list{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:26px;}
+.h-item{display:flex;gap:12px;align-items:flex-start;padding:16px 18px;}
+.h-item svg{flex:none;color:var(--cyan);margin-top:3px;}
+.h-item b{display:block;font-size:14.5px;color:var(--text);font-weight:500;letter-spacing:.03em;}
+.h-item span{font-size:12.5px;color:var(--text-3);font-family:var(--font-mono);letter-spacing:.08em;}
+
+/* 证书画廊 */
+.cert-gallery{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:20px;
+}
+.cert-item{
+  position:relative;border-radius:10px;overflow:hidden;
+  border:1px solid var(--line);background:var(--bg-2);
+  cursor:pointer;transition:transform .3s var(--ease),border-color .3s,box-shadow .3s;
+  aspect-ratio:4/3;
+}
+.cert-item:hover{
+  transform:translateY(-4px);border-color:var(--line-strong);
+  box-shadow:0 10px 30px rgba(46,230,200,.18);
+}
+.cert-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s var(--ease);}
+.cert-item:hover img{transform:scale(1.05);}
+.cert-item .cert-cap{
+  position:absolute;left:0;right:0;bottom:0;padding:10px 14px;
+  background:linear-gradient(180deg,transparent,rgba(4,8,15,.92));
+  font-size:12.5px;color:var(--cyan-soft);letter-spacing:.04em;
+}
+.cert-item .cert-cap .cert-year{font-family:var(--font-mono);color:var(--text-3);font-size:11px;margin-left:6px;}
+
+/* Lightbox */
+.lightbox{
+  position:fixed;inset:0;z-index:200;display:none;
+  background:rgba(2,5,10,.92);backdrop-filter:blur(8px);
+  align-items:center;justify-content:center;padding:40px;
+  cursor:zoom-out;
+}
+.lightbox.open{display:flex;}
+.lightbox img{
+  max-width:92vw;max-height:88vh;object-fit:contain;
+  border-radius:8px;border:1px solid var(--line-strong);
+  box-shadow:0 0 60px rgba(46,230,200,.2);
+}
+.lightbox .lb-close{
+  position:absolute;top:24px;right:28px;width:44px;height:44px;
+  border:1px solid var(--line);border-radius:10px;background:rgba(10,20,38,.8);
+  color:var(--cyan);cursor:pointer;display:flex;align-items:center;justify-content:center;
+  font-size:20px;transition:background .3s;
+}
+.lightbox .lb-close:hover{background:rgba(46,230,200,.15);}
+.lightbox .lb-caption{
+  position:absolute;bottom:24px;left:50%;transform:translateX(-50%);
+  font-family:var(--font-mono);font-size:13px;color:var(--cyan-soft);letter-spacing:.1em;
+  text-align:center;
+}
+
+/* ============================================================
+   10. 愿景 / 结语
+   ============================================================ */
+.vision{
+  position:relative;z-index:2;
+  padding:120px 0;
+  overflow:hidden;
+}
+.vision-bg{
+  position:absolute;inset:0;z-index:-1;
+  background:
+    linear-gradient(180deg,var(--bg-1) 0%,rgba(6,13,25,.4) 40%,rgba(6,13,25,.55) 100%),
+    url('https://aka.doubaocdn.com/s/bru8AcrQOk') center 60%/cover no-repeat;
+}
+.vision-inner{text-align:center;max-width:760px;margin:0 auto;}
+.vision-quote{
+  font-size:clamp(22px,3.6vw,32px);font-weight:300;line-height:1.6;color:var(--text);
+  letter-spacing:.04em;margin-bottom:28px;
+}
+.vision-quote b{color:var(--cyan);font-weight:500;}
+.vision-coord{
+  font-family:var(--font-mono);font-size:13px;color:var(--text-3);letter-spacing:.2em;
+  margin-bottom:44px;
+}
+.vision-cta{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
+.contact-strip{
+  margin-top:64px;padding:34px;text-align:center;
+}
+.contact-strip h3{font-size:20px;font-weight:700;letter-spacing:.08em;margin-bottom:18px;}
+.contact-links{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+.clink{
+  display:inline-flex;align-items:center;gap:10px;min-height:46px;padding:0 22px;
+  border:1px solid var(--line);border-radius:9px;color:var(--text-2);
+  font-size:14px;letter-spacing:.05em;transition:all .3s;
+}
+.clink:hover{color:var(--cyan);border-color:var(--line-strong);transform:translateY(-2px);box-shadow:0 6px 22px rgba(46,230,200,.14);}
+.clink svg{color:var(--cyan);}
+
+/* ============================================================
+   11. 页脚
+   ============================================================ */
+footer{
+  position:relative;z-index:2;
+  border-top:1px solid var(--line);
+  padding:34px 0;
+  background:rgba(4,8,15,.6);
+}
+.foot-inner{
+  max-width:var(--maxw);margin:0 auto;padding:0 28px;
+  display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;
+}
+.foot-brand{display:flex;align-items:center;gap:10px;}
+.foot-brand img{width:26px;height:26px;border-radius:6px;object-fit:cover;border:1px solid var(--line);}
+.foot-brand span{font-family:var(--font-mono);font-size:12.5px;color:var(--text-3);letter-spacing:.14em;}
+.foot-copy{font-family:var(--font-mono);font-size:12px;color:var(--text-3);letter-spacing:.08em;}
+.foot-copy b{color:var(--cyan);font-weight:400;}
+
+/* ============================================================
+   12. 响应式
+   ============================================================ */
+@media (max-width:960px){
+  .hero-grid{grid-template-columns:1fr;gap:34px;}
+  .hero-panel{flex-direction:row;flex-wrap:wrap;}
+  .hstat{flex:1 1 220px;}
+  .about-grid{grid-template-columns:1fr;}
+  .research-grid,.work-grid{grid-template-columns:1fr;}
+  .research-visual,.work-visual{min-height:300px;}
+  .honor-grid{grid-template-columns:1fr 1fr;}
+  .cert-gallery{grid-template-columns:1fr 1fr;}
+  .practice-grid{grid-template-columns:1fr;}
+  .nav-links{display:none;}
+  .menu-btn{display:inline-flex;align-items:center;justify-content:center;}
+  .nav-links.open{
+    display:flex;position:fixed;top:var(--nav-h);left:0;right:0;flex-direction:column;
+    background:rgba(4,9,18,.97);border-bottom:1px solid var(--line);
+    padding:10px 0 16px;gap:2px;
+  }
+  .nav-links.open a{width:100%;padding:14px 28px;}
+  .nav-cta{display:none;}
+}
+@media (max-width:560px){
+  section{padding:72px 0;}
+  .honor-grid{grid-template-columns:1fr;}
+  .cert-gallery{grid-template-columns:1fr;}
+  .about-facts{grid-template-columns:1fr;}
+  .skills{grid-template-columns:1fr;}
+  .h-list{grid-template-columns:1fr;}
+  .wrap{padding:0 20px;}
+  .scroll-hint{display:none;}
+}
+</style>
+</head>
+<body>
+
+<!-- 扫描线 -->
+<div class="scanline" aria-hidden="true"></div>
+
+<!-- ==================== 顶部导航 ==================== -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a class="brand" href="#top">
+      <img class="brand-logo" src="https://aka.doubaocdn.com/s/CvELXpdyRF" alt="品牌标识">
+      <span class="brand-name">HU<em>·</em>HAO</span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">关于我</a></li>
+      <li><a href="#journey">成长轨迹</a></li>
+      <li><a href="#research">研究领域</a></li>
+      <li><a href="#work">学生工作</a></li>
+      <li><a href="#honors">成果荣誉</a></li>
+      <li><a href="#contact">联系</a></li>
+    </ul>
+    <a class="nav-cta" href="#contact">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4Z"/></svg>
+      取得联系
+    </a>
+    <button class="menu-btn" id="menuBtn" aria-label="打开导航">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+    </button>
+  </div>
+</nav>
+
+<!-- ==================== Hero ==================== -->
+<header class="hero" id="top">
+  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-kicker">SYSTEM ONLINE · 个人系统 v2.0</div>
+        <h1 class="hero-name">
+          <span class="en">HU HAO</span>
+          <span class="zh">胡 浩</span>
+        </h1>
+        <div class="hero-role"><span class="dot"></span>土木工程硕士研究生 · 学生工作深耕者</div>
+        <p class="hero-desc">
+          西安建筑科技大学土木工程学院2024级硕士研究生，专注 <strong>混凝土耐久性</strong> 研究，
+          探索盐渍土环境下钢筋锈蚀的演化机理；同时以学生干部身份服务青年成长，
+          在<strong>科研</strong>与<strong>实践</strong>之间，做一个「建得住」的人。
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#about">
+            了解我
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+          </a>
+          <a class="btn btn-ghost" href="#honors">
+            查看荣誉
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="hero-panel">
+        <div class="hstat">
+          <div class="hstat-ico">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20h20"/><path d="M4 20V8l6-4v16M10 20V4l10 6v10"/></svg>
+          </div>
+          <div><b data-count="2">0</b><span>硕士研究生在读 · 研二</span></div>
+          <div class="misc">EDU.SYS</div>
+        </div>
+        <div class="hstat">
+          <div class="hstat-ico">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>
+          </div>
+          <div><b data-count="10">0</b><span>荣誉奖项 · 累计获得</span></div>
+          <div class="misc">HONOR.SYS</div>
+        </div>
+        <div class="hstat">
+          <div class="hstat-ico">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9.5" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <div><b data-count="5">0</b><span>学生工作与培训经历</span></div>
+          <div class="misc">ORG.SYS</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-hint">SCROLL</div>
+</header>
+
+<!-- ==================== 关于我 ==================== -->
+<section id="about">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-code">01</span>
+      <h2 class="sec-title">关于我</h2>
+      <div class="sec-line"></div>
+    </div>
+    <div class="about-grid">
+      <div class="card avatar-card reveal">
+        <img src="https://aka.doubaocdn.com/s/CvELXpdyRF" alt="胡浩头像">
+        <div class="a-name">HU HAO</div>
+        <div class="a-sub">CIVIL ENGINEERING · 2024</div>
+        <div class="avatar-tags">
+          <span class="tag">土木工程</span>
+          <span class="tag">混凝土耐久性</span>
+          <span class="tag">研会主席团</span>
+          <span class="tag">青年服务</span>
+          <span class="tag">结构设计竞赛</span>
+        </div>
+      </div>
+      <div class="about-text reveal reveal-d1">
+        <p class="lead">
+          我是 <span class="hl">胡浩</span>，一名土木工程专业硕士研究生，<strong>以「让建筑更耐久」为科研志向</strong>，
+          以「服务青年成长」为实践初心。
+        </p>
+        <p>
+          本科毕业于鲁东大学土木工程专业，在校期间获"烟建杯"第十四届鲁东大学大学生结构设计竞赛一等奖、
+          烟建奖学金、优秀共青团员等荣誉，并在经发集团建筑工地与山东高速路桥济潍高速项目完成现场实习。
+        </p>
+        <p>
+          现就读于西安建筑科技大学土木工程学院，聚焦混凝土耐久性方向，关注盐渍土环境下钢筋锈蚀行为与结构寿命预测；
+          同时担任院研究生会主席团成员，在活动策划、组织协调与青年服务中不断积累综合能力。
+        </p>
+        <div class="about-facts">
+          <div class="card fact">
+            <div class="f-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c0 1.7 2.7 3 6 3s6-1.3 6-3v-5"/></svg></div>
+            <div><span class="f-lab">教育背景</span><span class="f-val">西建大硕士 · 鲁东大学本科</span></div>
+          </div>
+          <div class="card fact">
+            <div class="f-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
+            <div><span class="f-lab">坐标</span><span class="f-val">34.23°N · 108.95°E</span></div>
+          </div>
+          <div class="card fact">
+            <div class="f-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 8.6a5 5 0 0 0-3-6.6 5 5 0 0 0-6.6 3A4.9 4.9 0 0 0 8 6.5a5 5 0 0 0-3.4 8.7 5 5 0 0 0 6.8.5 5 5 0 0 0 7.8-1.9A4.9 4.9 0 0 0 20.8 8.6Z"/></svg></div>
+            <div><span class="f-lab">科研方向</span><span class="f-val">盐渍土环境钢筋锈蚀</span></div>
+          </div>
+          <div class="card fact">
+            <div class="f-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9.5" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+            <div><span class="f-lab">身份标签</span><span class="f-val">研会主席团 · 省学联 · 校两办</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 成长轨迹 ==================== -->
+<section id="journey" style="padding-top:30px;">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-code">02</span>
+      <h2 class="sec-title">成长轨迹</h2>
+      <div class="sec-line"></div>
+    </div>
+    <div class="timeline">
+      <div class="t-item reveal">
+        <div class="t-year">2024 — NOW</div>
+        <div class="t-role">硕士研究生</div>
+        <div class="t-org">西安建筑科技大学 · 土木工程学院 <em>（2024级专业硕士）</em></div>
+        <div class="t-desc">
+          <ul>
+            <li>聚焦混凝土耐久性方向，开展盐渍土环境下钢筋锈蚀行为研究</li>
+            <li>担任院研究生会主席团成员（2025—2026学年），统筹学院研究生品牌活动</li>
+            <li>2024—2025学年获研究生二等学业奖学金</li>
+          </ul>
+        </div>
+      </div>
+      <div class="t-item reveal reveal-d1">
+        <div class="t-year">2020 — 2024</div>
+        <div class="t-role">本科 · 土木工程专业</div>
+        <div class="t-org">鲁东大学 <em>（山东烟台）</em></div>
+        <div class="t-desc">
+          <ul>
+            <li>打下扎实的力学与结构专业基础，完成三重木塔结构模型、梯形屋架等课设</li>
+            <li>2022年获"烟建杯"第十四届鲁东大学大学生结构设计竞赛一等奖</li>
+            <li>2021—2022学年获烟建奖学金（创新创业方面表现突出）</li>
+            <li>2021年度获优秀共青团员称号</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- 实践经历 -->
+    <div class="practice-grid">
+      <div class="card p-card reveal">
+        <span class="p-tag">INTERNSHIP · 01</span>
+        <h4>山东高速路桥集团 · 施工现场实习</h4>
+        <div class="p-place">济潍高速七合同项目一分部</div>
+        <p>深入高速公路施工现场，参与指挥交通、桩基施工与深夜验收等一线工作，
+        直观了解大型路桥工程的建设流程与质量管控要点。</p>
+      </div>
+      <div class="card p-card reveal reveal-d1">
+        <span class="p-tag">INTERNSHIP · 02</span>
+        <h4>经发集团 · 建筑工地实习</h4>
+        <div class="p-place">房建工程项目部</div>
+        <p>在房建工地参与梁钢筋间距验收等质量检查工作，将课堂所学的结构知识
+        与现场施工实践相结合，积累工程一线经验。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 研究领域 ==================== -->
+<section id="research" style="padding-top:20px;">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-code">03</span>
+      <h2 class="sec-title">研究领域</h2>
+      <div class="sec-line"></div>
+    </div>
+    <div class="research-grid">
+      <div class="research-main">
+        <div class="card r-card reveal">
+          <div class="r-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 2 7l10 5 10-5-10-5Z"/><path d="m2 17 10 5 10-5"/><path d="m2 12 10 5 10-5"/></svg></div>
+          <h3>盐渍土环境下的钢筋锈蚀行为</h3>
+          <p>针对西北地区氯盐渍土侵蚀环境，研究氯离子传输、钢筋锈蚀演化与混凝土劣化之间的耦合机制，探索寒区冻融与锈蚀的联合作用规律。</p>
+          <span class="r-badge">FOCUS · 核心课题</span>
+        </div>
+        <div class="card r-card reveal reveal-d1">
+          <div class="r-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-6 4 3 5-8"/></svg></div>
+          <h3>混凝土耐久性与寿命预测</h3>
+          <p>面向早龄期混凝土与初始缺陷工况，研究冻融-锈蚀耦合效应，探索碳化预测模型与无损/分层测试技术在工程中的应用。</p>
+          <span class="r-badge">METHOD · 跨领域迁移</span>
+        </div>
+      </div>
+      <div class="research-visual reveal reveal-d1">
+        <img src="https://aka.doubaocdn.com/s/dTmnL10FBC" alt="混凝土耐久性研究">
+        <div class="overlay">
+          <div class="ov-code">LAB.SCENE · 01</div>
+          <div class="ov-title">让材料可测 · 让寿命可算</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="skills">
+      <div class="card skill reveal">
+        <div class="skill-head"><span class="skill-name">混凝土材料与耐久性试验</span><span class="skill-val">90%</span></div>
+        <div class="skill-bar"><i data-w="90"></i></div>
+      </div>
+      <div class="card skill reveal reveal-d1">
+        <div class="skill-head"><span class="skill-name">结构设计与模型制作</span><span class="skill-val">88%</span></div>
+        <div class="skill-bar"><i data-w="88"></i></div>
+      </div>
+      <div class="card skill reveal reveal-d2">
+        <div class="skill-head"><span class="skill-name">组织策划与青年服务</span><span class="skill-val">92%</span></div>
+        <div class="skill-bar"><i data-w="92"></i></div>
+      </div>
+      <div class="card skill reveal reveal-d3">
+        <div class="skill-head"><span class="skill-name">办公软件与数据处理</span><span class="skill-val">88%</span></div>
+        <div class="skill-bar"><i data-w="88"></i></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 学生工作 ==================== -->
+<section id="work" style="padding-top:20px;">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-code">04</span>
+      <h2 class="sec-title">学生工作</h2>
+      <div class="sec-line"></div>
+    </div>
+    <div class="work-grid">
+      <div class="work-cards">
+        <div class="card w-card reveal">
+          <div class="w-num">01</div>
+          <div>
+            <h3>院研究生会主席团成员</h3>
+            <div class="w-meta">2025 — 2026 · 西安建筑科技大学</div>
+            <p>统筹学院研究生会工作，在活动组织、部门协调及服务同学等方面表现突出，
+            任期届满考核合格，获师生一致认可。</p>
+          </div>
+        </div>
+        <div class="card w-card reveal reveal-d1">
+          <div class="w-num">02</div>
+          <div>
+            <h3>陕西省学生联合会工作人员</h3>
+            <div class="w-meta">在校期间 · 省级学联</div>
+            <p>参与省级学联日常工作，在跨校联络、会议组织与文件起草中锻炼系统思维与协作能力，
+            拓展青年工作视野。</p>
+          </div>
+        </div>
+        <div class="card w-card reveal reveal-d2">
+          <div class="w-num">03</div>
+          <div>
+            <h3>校两办助管</h3>
+            <div class="w-meta">在校期间 · 校内行政</div>
+            <p>承担校内行政辅助工作，在公文流转、会议保障与综合事务中积累行政素养与服务意识，
+            提升规范化办公能力。</p>
+          </div>
+        </div>
+        <div class="card w-card reveal reveal-d3">
+          <div class="w-num">04</div>
+          <div>
+            <h3>学生骨干训练营 · 结业</h3>
+            <div class="w-meta">2025.08 · 西建大土木工程学院</div>
+            <p>参加学院"学生骨干训练营"，圆满完成全部培训课程及实践任务，
+            系统提升学生工作的理论素养与实践能力。</p>
+          </div>
+        </div>
+        <div class="card w-card reveal reveal-d3">
+          <div class="w-num">05</div>
+          <div>
+            <h3>第三届陕西省三校联动交流会 · 优秀代表</h3>
+            <div class="w-meta">2025.10 · 西建大土木工程学院研究生会主办</div>
+            <p>作为学院优秀代表参会，围绕"青年研究生成长新范式的探索与构建"主题积极交流，
+            贡献宝贵智慧，展现良好风采。</p>
+          </div>
+        </div>
+      </div>
+      <div class="work-visual reveal reveal-d1">
+        <img src="https://aka.doubaocdn.com/s/Obu7kMO0Po" alt="学生工作与团队">
+        <div class="overlay">
+          <div class="ov-code">ORG.SCENE · 04</div>
+          <div class="ov-title">以服务之名 · 与青年同行</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 成果荣誉 ==================== -->
+<section id="honors" style="padding-top:20px;">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-code">05</span>
+      <h2 class="sec-title">成果与荣誉</h2>
+      <div class="sec-line"></div>
+    </div>
+    <div class="honor-grid">
+      <div class="card h-card reveal">
+        <div class="h-num" data-count="10">0</div>
+        <div class="h-unit">项 · 荣誉与资质</div>
+        <h4>学术与综合荣誉</h4>
+        <p>涵盖奖学金、竞赛、团学表彰等多个维度</p>
+      </div>
+      <div class="card h-card reveal reveal-d1">
+        <div class="h-num" data-count="1">0</div>
+        <div class="h-unit">等奖 · 结构设计竞赛</div>
+        <h4>"烟建杯"一等奖</h4>
+        <p>第十四届鲁东大学大学生结构设计竞赛</p>
+      </div>
+      <div class="card h-card reveal reveal-d2">
+        <div class="h-num" data-count="2">0</div>
+        <div class="h-unit">段 · 工地实习</div>
+        <h4>工程一线实践</h4>
+        <p>山东高速路桥 · 经发集团建筑工地</p>
+      </div>
+    </div>
+
+    <div class="h-list">
+      <div class="card h-item reveal">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/></svg>
+        <div><b>研究生二等学业奖学金</b><span>2025.12 · 西安建筑科技大学</span></div>
+      </div>
+      <div class="card h-item reveal reveal-d1">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/></svg>
+        <div><b>全国勘察设计注册工程师基础考试合格</b><span>2025.11 · 一级注册结构工程师 · 人社部</span></div>
+      </div>
+      <div class="card h-item reveal reveal-d1">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/></svg>
+        <div><b>研会主席团成员任职证明</b><span>2026.09 · 西建大土木学院团委</span></div>
+      </div>
+      <div class="card h-item reveal">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/></svg>
+        <div><b>入党积极分子培训班结业</b><span>2025.11 · 中共西建大委员会党校</span></div>
+      </div>
+      <div class="card h-item reveal reveal-d1">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/></svg>
+        <div><b>第三届陕西省三校联动交流会参会</b><span>2025.10 · 西建大土木学院研会</span></div>
+      </div>
+      <div class="card h-item reveal">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/></svg>
+        <div><b>学生骨干训练营结业</b><span>2025.08 · 西建大土木学院团委</span></div>
+      </div>
+      <div class="card h-item reveal reveal-d1">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/></svg>
+        <div><b>烟建奖学金</b><span>2022.11 · 鲁东大学团委（创新创业突出）</span></div>
+      </div>
+      <div class="card h-item reveal">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/></svg>
+        <div><b>优秀共青团员</b><span>2022.05 · 共青团鲁东大学委员会</span></div>
+      </div>
+      <div class="card h-item reveal reveal-d1">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/></svg>
+        <div><b>"烟建杯"结构设计竞赛一等奖</b><span>2022.04 · 第十四届鲁东大学</span></div>
+      </div>
+      <div class="card h-item reveal">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/></svg>
+        <div><b>普通话水平测试 二级乙等</b><span>2021.06 · 83.8分</span></div>
+      </div>
+    </div>
+
+    <!-- 证书画廊 -->
+    <div class="sec-head reveal" style="margin-top:56px;">
+      <span class="sec-code">CERT</span>
+      <h2 class="sec-title" style="font-size:clamp(20px,3vw,28px);">证书画廊</h2>
+      <div class="sec-line"></div>
+    </div>
+    <p class="reveal" style="color:var(--text-2);font-size:14px;font-weight:300;margin-bottom:8px;">点击证书可放大查看</p>
+    <div class="cert-gallery" id="certGallery">
+      <div class="cert-item reveal" data-src="https://aka.doubaocdn.com/s/rq3WepNUbQ" data-cap="研究生二等学业奖学金 · 2025.12">
+        <img src="https://aka.doubaocdn.com/s/rq3WepNUbQ" alt="研究生二等学业奖学金">
+        <div class="cert-cap">研究生二等学业奖学金<span class="cert-year">2025</span></div>
+      </div>
+      <div class="cert-item reveal reveal-d1" data-src="https://aka.doubaocdn.com/s/dLD9gbYS24" data-cap="全国勘察设计注册工程师基础考试合格 · 2025.11">
+        <img src="https://aka.doubaocdn.com/s/dLD9gbYS24" alt="勘察设计注册工程师">
+        <div class="cert-cap">注册结构工程师基础合格<span class="cert-year">2025</span></div>
+      </div>
+      <div class="cert-item reveal reveal-d1" data-src="https://aka.doubaocdn.com/s/5GQBzOp9gr" data-cap="研会主席团成员任职证明 · 2026.09">
+        <img src="https://aka.doubaocdn.com/s/5GQBzOp9gr" alt="研会主席团成员任职证明">
+        <div class="cert-cap">研会主席团任职证明<span class="cert-year">2026</span></div>
+      </div>
+      <div class="cert-item reveal reveal-d2" data-src="https://aka.doubaocdn.com/s/pAEPOYQG3N" data-cap="入党积极分子培训班结业 · 2025.11">
+        <img src="https://aka.doubaocdn.com/s/pAEPOYQG3N" alt="积极分子结业证书">
+        <div class="cert-cap">入党积极分子结业<span class="cert-year">2025</span></div>
+      </div>
+      <div class="cert-item reveal" data-src="https://aka.doubaocdn.com/s/h4eDmj4lF1" data-cap="第三届陕西省三校联动交流会参会 · 2025.10">
+        <img src="https://aka.doubaocdn.com/s/h4eDmj4lF1" alt="三校联动参会证书">
+        <div class="cert-cap">三校联动交流会<span class="cert-year">2025</span></div>
+      </div>
+      <div class="cert-item reveal reveal-d1" data-src="https://aka.doubaocdn.com/s/RZTyHi4nwi" data-cap="学生骨干训练营结业 · 2025.08">
+        <img src="https://aka.doubaocdn.com/s/RZTyHi4nwi" alt="学生骨干训练营结业证书">
+        <div class="cert-cap">学生骨干训练营<span class="cert-year">2025</span></div>
+      </div>
+      <div class="cert-item reveal reveal-d2" data-src="https://aka.doubaocdn.com/s/oBBoX7wKiS" data-cap="烟建奖学金 · 2022.11">
+        <img src="https://aka.doubaocdn.com/s/oBBoX7wKiS" alt="烟建奖学金">
+        <div class="cert-cap">烟建奖学金<span class="cert-year">2022</span></div>
+      </div>
+      <div class="cert-item reveal" data-src="https://aka.doubaocdn.com/s/RsDBBmGYGV" data-cap="优秀共青团员 · 2022.05">
+        <img src="https://aka.doubaocdn.com/s/RsDBBmGYGV" alt="优秀共青团员">
+        <div class="cert-cap">优秀共青团员<span class="cert-year">2022</span></div>
+      </div>
+      <div class="cert-item reveal reveal-d1" data-src="https://aka.doubaocdn.com/s/g4pjIQcmJv" data-cap="烟建杯第十四届结构设计竞赛一等奖 · 2022.04">
+        <img src="https://aka.doubaocdn.com/s/g4pjIQcmJv" alt="烟建杯一等奖">
+        <div class="cert-cap">烟建杯一等奖<span class="cert-year">2022</span></div>
+      </div>
+      <div class="cert-item reveal reveal-d2" data-src="https://aka.doubaocdn.com/s/DhV32P6S7o" data-cap="普通话水平测试二级乙等 · 2021.06">
+        <img src="https://aka.doubaocdn.com/s/DhV32P6S7o" alt="普通话等级证书">
+        <div class="cert-cap">普通话二级乙等<span class="cert-year">2021</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox">
+  <button class="lb-close" id="lbClose" aria-label="关闭">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+  </button>
+  <img id="lbImg" src="" alt="">
+  <div class="lb-caption" id="lbCaption"></div>
+</div>
+
+<!-- ==================== 愿景 ==================== -->
+<section class="vision" id="contact">
+  <div class="vision-bg" aria-hidden="true"></div>
+  <div class="wrap vision-inner">
+    <div class="sec-head reveal" style="justify-content:center;">
+      <span class="sec-code">06</span>
+      <h2 class="sec-title">愿景与联系</h2>
+      <div class="sec-line"></div>
+    </div>
+    <p class="vision-quote reveal reveal-d1">
+      每一座建筑都有寿命，而我的研究，<br>是让它 <b>活得更久</b> 一点。
+    </p>
+    <div class="vision-coord reveal reveal-d2">
+      COORD: 34.23°N / 108.95°E · STATUS: OPEN TO CONNECT
+    </div>
+    <div class="vision-cta reveal reveal-d2">
+      <a class="btn btn-primary" href="mailto:huhao_2024@163.com">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
+        邮件联系
+      </a>
+      <a class="btn btn-ghost" href="#top">
+        回到顶部
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+      </a>
+    </div>
+    <div class="card contact-strip reveal reveal-d3">
+      <h3>CONTACT CHANNELS</h3>
+      <div class="contact-links">
+        <a class="clink" href="mailto:huhao_2024@163.com">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
+          邮箱 · huhao_2024@163.com
+        </a>
+        <a class="clink" href="#contact">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9.5" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          微信 · 13872641329
+        </a>
+        <a class="clink" href="#contact">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12h8M12 8v8"/></svg>
+          QQ · 974010675
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 页脚 ==================== -->
+<footer>
+  <div class="foot-inner">
+    <div class="foot-brand">
+      <img src="https://aka.doubaocdn.com/s/CvELXpdyRF" alt="logo">
+      <span>HU HAO · PERSONAL SYSTEM</span>
+    </div>
+    <div class="foot-copy">© 2026 <b>胡浩</b> · 建得更久，行得更远</div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ---- 导航栏滚动状态 ---- */
+  var nav = document.getElementById('nav');
+  var menuBtn = document.getElementById('menuBtn');
+  var navLinks = document.getElementById('navLinks');
+  function onScrollNav(){
+    nav.classList.toggle('scrolled', window.scrollY > 24);
+  }
+  window.addEventListener('scroll', onScrollNav, {passive:true});
+  onScrollNav();
+
+  menuBtn.addEventListener('click', function(){
+    navLinks.classList.toggle('open');
+  });
+  navLinks.addEventListener('click', function(e){
+    if(e.target.tagName === 'A') navLinks.classList.remove('open');
+  });
+
+  /* ---- 滚动渐入 ---- */
+  var revealEls = document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){
+          en.target.classList.add('in');
+          io.unobserve(en.target);
+        }
+      });
+    }, {threshold:.12, rootMargin:'0px 0px -40px 0px'});
+    revealEls.forEach(function(el){ io.observe(el); });
+  } else {
+    revealEls.forEach(function(el){ el.classList.add('in'); });
+  }
+
+  /* ---- 数字计数动画 ---- */
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function animateCount(el){
+    var target = parseInt(el.getAttribute('data-count'),10) || 0;
+    var dur = 1200, start = null;
+    function step(ts){
+      if(!start) start = ts;
+      var p = Math.min((ts - start)/dur, 1);
+      var eased = 1 - Math.pow(1-p, 3);
+      el.textContent = Math.round(target * eased);
+      if(p < 1) requestAnimationFrame(step);
+      else el.textContent = target;
+    }
+    requestAnimationFrame(step);
+  }
+  var countEls = document.querySelectorAll('[data-count]');
+  if('IntersectionObserver' in window && !reduceMotion){
+    var cio = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){
+          animateCount(en.target);
+          cio.unobserve(en.target);
+        }
+      });
+    }, {threshold:.6});
+    countEls.forEach(function(el){ cio.observe(el); });
+  } else {
+    countEls.forEach(function(el){ el.textContent = el.getAttribute('data-count'); });
+  }
+
+  /* ---- 技能条动画 ---- */
+  var bars = document.querySelectorAll('.skill-bar i');
+  function fillBar(el){
+    el.style.width = (el.getAttribute('data-w')||'0') + '%';
+  }
+  if('IntersectionObserver' in window && !reduceMotion){
+    var bio = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){
+          fillBar(en.target);
+          bio.unobserve(en.target);
+        }
+      });
+    }, {threshold:.4});
+    bars.forEach(function(el){ bio.observe(el); });
+  } else {
+    bars.forEach(fillBar);
+  }
+
+  /* ---- 证书 Lightbox ---- */
+  var lightbox = document.getElementById('lightbox');
+  var lbImg = document.getElementById('lbImg');
+  var lbCaption = document.getElementById('lbCaption');
+  var lbClose = document.getElementById('lbClose');
+  document.querySelectorAll('.cert-item').forEach(function(item){
+    item.addEventListener('click', function(){
+      lbImg.src = item.getAttribute('data-src');
+      lbImg.alt = item.getAttribute('data-cap') || '';
+      lbCaption.textContent = item.getAttribute('data-cap') || '';
+      lightbox.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+  function closeLb(){
+    lightbox.classList.remove('open');
+    lbImg.src = '';
+    document.body.style.overflow = '';
+  }
+  lbClose.addEventListener('click', closeLb);
+  lightbox.addEventListener('click', function(e){
+    if(e.target === lightbox) closeLb();
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && lightbox.classList.contains('open')) closeLb();
+  });
+
+})();
+</script>
+</body>
+</html>
