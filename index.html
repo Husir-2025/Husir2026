@@ -461,6 +461,96 @@ section{padding:96px 0;position:relative;z-index:2;}
 }
 
 /* ============================================================
+   照片墙（学生工作 / 通用）
+   ============================================================ */
+.photo-wall{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:28px;
+}
+.photo-item{
+  position:relative;border-radius:10px;overflow:hidden;
+  border:1px solid var(--line);background:var(--bg-2);
+  cursor:pointer;transition:transform .3s var(--ease),border-color .3s,box-shadow .3s;
+  aspect-ratio:4/3;
+}
+.photo-item.wide{grid-column:span 2;aspect-ratio:8/3;}
+.photo-item.tall{grid-row:span 2;aspect-ratio:3/4;}
+.photo-item:hover{
+  transform:translateY(-3px);border-color:var(--line-strong);
+  box-shadow:0 10px 28px rgba(46,230,200,.18);
+}
+.photo-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s var(--ease);}
+.photo-item:hover img{transform:scale(1.06);}
+.photo-item .photo-cap{
+  position:absolute;left:0;right:0;bottom:0;padding:8px 12px;
+  background:linear-gradient(180deg,transparent,rgba(4,8,15,.9));
+  font-size:12px;color:var(--cyan-soft);letter-spacing:.03em;
+  opacity:0;transition:opacity .3s;
+}
+.photo-item:hover .photo-cap{opacity:1;}
+
+/* ============================================================
+   游玩经历
+   ============================================================ */
+.travel-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:28px;
+}
+.travel-card{
+  border-radius:var(--radius);overflow:hidden;
+  border:1px solid var(--line);background:var(--bg-2);
+  transition:transform .3s var(--ease),border-color .3s,box-shadow .3s;
+}
+.travel-card:hover{
+  transform:translateY(-4px);border-color:var(--line-strong);
+  box-shadow:0 12px 32px rgba(46,230,200,.15);
+}
+.travel-card .t-imgs{
+  display:grid;grid-template-columns:1fr 1fr;gap:2px;aspect-ratio:4/3;
+}
+.travel-card .t-imgs.single{grid-template-columns:1fr;}
+.travel-card .t-imgs img{width:100%;height:100%;object-fit:cover;cursor:pointer;transition:transform .4s var(--ease);}
+.travel-card .t-imgs img:hover{transform:scale(1.05);}
+.travel-card .t-info{padding:16px 18px;}
+.travel-card .t-name{
+  font-size:17px;font-weight:700;color:var(--text);letter-spacing:.05em;margin-bottom:4px;
+  display:flex;align-items:center;gap:8px;
+}
+.travel-card .t-name .t-icon{color:var(--cyan);flex:none;}
+.travel-card .t-desc{font-size:13px;color:var(--text-2);font-weight:300;line-height:1.7;}
+.travel-card .t-tag{
+  display:inline-block;margin-top:8px;font-family:var(--font-mono);font-size:11px;
+  color:var(--cyan);letter-spacing:.1em;border:1px solid var(--line);
+  padding:3px 10px;border-radius:5px;background:rgba(46,230,200,.06);
+}
+
+/* ============================================================
+   生活痕迹
+   ============================================================ */
+.life-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:28px;
+}
+.life-card{
+  display:grid;grid-template-columns:1fr 1fr;gap:0;
+  border-radius:var(--radius);overflow:hidden;
+  border:1px solid var(--line);background:var(--bg-2);
+  transition:transform .3s var(--ease),border-color .3s,box-shadow .3s;
+}
+.life-card:hover{
+  transform:translateY(-3px);border-color:var(--line-strong);
+  box-shadow:0 10px 28px rgba(46,230,200,.15);
+}
+.life-card .life-img{aspect-ratio:1;overflow:hidden;}
+.life-card .life-img img{width:100%;height:100%;object-fit:cover;cursor:pointer;transition:transform .5s var(--ease);}
+.life-card .life-img img:hover{transform:scale(1.06);}
+.life-card .life-info{padding:24px 26px;display:flex;flex-direction:column;justify-content:center;}
+.life-card .life-date{font-family:var(--font-mono);font-size:12px;color:var(--cyan);letter-spacing:.14em;margin-bottom:10px;}
+.life-card .life-title{font-size:19px;font-weight:700;color:var(--text);letter-spacing:.05em;margin-bottom:10px;}
+.life-card .life-desc{font-size:14px;color:var(--text-2);font-weight:300;line-height:1.85;}
+.life-card .life-quote{
+  margin-top:14px;padding-left:12px;border-left:2px solid var(--cyan);
+  font-size:13px;color:var(--cyan-soft);font-style:italic;line-height:1.7;
+}
+
+/* ============================================================
    10. 愿景 / 结语
    ============================================================ */
 .vision{
@@ -529,6 +619,10 @@ footer{
   .research-visual,.work-visual{min-height:300px;}
   .honor-grid{grid-template-columns:1fr 1fr;}
   .cert-gallery{grid-template-columns:1fr 1fr;}
+  .photo-wall{grid-template-columns:1fr 1fr;}
+  .photo-item.wide{grid-column:span 2;}
+  .travel-grid{grid-template-columns:1fr 1fr;}
+  .life-grid{grid-template-columns:1fr;}
   .practice-grid{grid-template-columns:1fr;}
   .nav-links{display:none;}
   .menu-btn{display:inline-flex;align-items:center;justify-content:center;}
@@ -569,6 +663,8 @@ footer{
       <li><a href="#journey">成长轨迹</a></li>
       <li><a href="#research">研究领域</a></li>
       <li><a href="#work">学生工作</a></li>
+      <li><a href="#travel">游玩经历</a></li>
+      <li><a href="#life">生活痕迹</a></li>
       <li><a href="#honors">成果荣誉</a></li>
       <li><a href="#contact">联系</a></li>
     </ul>
@@ -868,6 +964,182 @@ footer{
         </div>
       </div>
     </div>
+
+    <!-- 学生工作照片墙 -->
+    <div class="sec-head reveal" style="margin-top:56px;">
+      <span class="sec-code">GALLERY</span>
+      <h2 class="sec-title" style="font-size:clamp(20px,3vw,28px);">工作瞬间</h2>
+      <div class="sec-line"></div>
+    </div>
+    <p class="reveal" style="color:var(--text-2);font-size:14px;font-weight:300;margin-bottom:8px;">点击照片可放大查看</p>
+    <div class="photo-wall">
+      <div class="photo-item wide reveal" data-src="https://aka.doubaocdn.com/s/xKIRUwYpR3" data-cap="三下乡优秀实践团队">
+        <img src="https://aka.doubaocdn.com/s/xKIRUwYpR3" alt="三下乡优秀实践团队"><div class="photo-cap">三下乡优秀实践团队</div>
+      </div>
+      <div class="photo-item reveal reveal-d1" data-src="https://aka.doubaocdn.com/s/HdZY9x0nqg" data-cap="三下乡优秀成果">
+        <img src="https://aka.doubaocdn.com/s/HdZY9x0nqg" alt="三下乡优秀成果"><div class="photo-cap">三下乡优秀成果</div>
+      </div>
+      <div class="photo-item reveal reveal-d2" data-src="https://aka.doubaocdn.com/s/RcfpSX4qYq" data-cap="研一·三下乡调研路上遇大水">
+        <img src="https://aka.doubaocdn.com/s/RcfpSX4qYq" alt="三下乡调研路上遇大水"><div class="photo-cap">三下乡调研路上</div>
+      </div>
+      <div class="photo-item reveal" data-src="https://aka.doubaocdn.com/s/epEbygtZci" data-cap="研一·暑期三下乡合照">
+        <img src="https://aka.doubaocdn.com/s/epEbygtZci" alt="暑期三下乡合照"><div class="photo-cap">暑期三下乡合照</div>
+      </div>
+      <div class="photo-item wide reveal reveal-d1" data-src="https://aka.doubaocdn.com/s/AGJDr7pzuE" data-cap="研一·研会合照">
+        <img src="https://aka.doubaocdn.com/s/AGJDr7pzuE" alt="研一研会合照"><div class="photo-cap">研一研会合照</div>
+      </div>
+      <div class="photo-item reveal reveal-d2" data-src="https://aka.doubaocdn.com/s/y7YPt9vD69" data-cap="研一·三校联动合照">
+        <img src="https://aka.doubaocdn.com/s/y7YPt9vD69" alt="研一三校联动合照"><div class="photo-cap">研一三校联动</div>
+      </div>
+      <div class="photo-item reveal" data-src="https://aka.doubaocdn.com/s/freSTMtouR" data-cap="研一·青羽杯羽毛球赛工作人员">
+        <img src="https://aka.doubaocdn.com/s/freSTMtouR" alt="青羽杯羽毛球赛"><div class="photo-cap">青羽杯工作人员</div>
+      </div>
+      <div class="photo-item reveal reveal-d1" data-src="https://aka.doubaocdn.com/s/S2oY4xC4H7" data-cap="研一·艺术党课群演">
+        <img src="https://aka.doubaocdn.com/s/S2oY4xC4H7" alt="艺术党课群演"><div class="photo-cap">艺术党课群演</div>
+      </div>
+      <div class="photo-item reveal reveal-d2" data-src="https://aka.doubaocdn.com/s/0aho2ybBGg" data-cap="研一·艺术党课群演">
+        <img src="https://aka.doubaocdn.com/s/0aho2ybBGg" alt="艺术党课群演2"><div class="photo-cap">艺术党课群演</div>
+      </div>
+      <div class="photo-item wide reveal" data-src="https://aka.doubaocdn.com/s/b5KkDRq7sf" data-cap="研二·三校联动发言">
+        <img src="https://aka.doubaocdn.com/s/b5KkDRq7sf" alt="研二三校联动发言"><div class="photo-cap">研二三校联动发言</div>
+      </div>
+      <div class="photo-item reveal reveal-d1" data-src="https://aka.doubaocdn.com/s/XRJFPZofxO" data-cap="研二·三校联动合照">
+        <img src="https://aka.doubaocdn.com/s/XRJFPZofxO" alt="研二三校联动合照"><div class="photo-cap">研二三校联动</div>
+      </div>
+      <div class="photo-item reveal reveal-d2" data-src="https://aka.doubaocdn.com/s/224vVX24BT" data-cap="研二·培训会">
+        <img src="https://aka.doubaocdn.com/s/224vVX24BT" alt="研二培训会"><div class="photo-cap">培训会</div>
+      </div>
+      <div class="photo-item reveal" data-src="https://aka.doubaocdn.com/s/1lCkJphtG2" data-cap="研二·就业夜校第一期">
+        <img src="https://aka.doubaocdn.com/s/1lCkJphtG2" alt="就业夜校第一期"><div class="photo-cap">就业夜校第一期</div>
+      </div>
+      <div class="photo-item reveal reveal-d1" data-src="https://aka.doubaocdn.com/s/YSA7Dga5PZ" data-cap="研二·就业夜校第二期">
+        <img src="https://aka.doubaocdn.com/s/YSA7Dga5PZ" alt="就业夜校第二期"><div class="photo-cap">就业夜校第二期</div>
+      </div>
+      <div class="photo-item reveal reveal-d2" data-src="https://aka.doubaocdn.com/s/YcYKhIic1A" data-cap="研二·就业夜校第五期">
+        <img src="https://aka.doubaocdn.com/s/YcYKhIic1A" alt="就业夜校第五期"><div class="photo-cap">就业夜校第五期</div>
+      </div>
+      <div class="photo-item reveal" data-src="https://aka.doubaocdn.com/s/UaiCL4FhK8" data-cap="研二·毕业歌会">
+        <img src="https://aka.doubaocdn.com/s/UaiCL4FhK8" alt="毕业歌会"><div class="photo-cap">毕业歌会</div>
+      </div>
+      <div class="photo-item reveal reveal-d1" data-src="https://aka.doubaocdn.com/s/pLvDUwkB3p" data-cap="调研动员会">
+        <img src="https://aka.doubaocdn.com/s/pLvDUwkB3p" alt="调研动员会"><div class="photo-cap">调研动员会</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 游玩经历 ==================== -->
+<section id="travel" style="padding-top:20px;">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-code">05</span>
+      <h2 class="sec-title">游玩经历</h2>
+      <div class="sec-line"></div>
+    </div>
+    <p class="reveal" style="color:var(--text-2);font-size:15px;font-weight:300;max-width:600px;">科研与工作之外，脚步从未停歇。山川湖海，皆是课堂。</p>
+    <div class="travel-grid">
+      <div class="travel-card reveal">
+        <div class="t-imgs">
+          <img data-src="https://aka.doubaocdn.com/s/5KcIdvmT6V" src="https://aka.doubaocdn.com/s/5KcIdvmT6V" alt="夜爬华山">
+          <img data-src="https://aka.doubaocdn.com/s/H4YpUxCkIw" src="https://aka.doubaocdn.com/s/H4YpUxCkIw" alt="夜爬华山">
+        </div>
+        <div class="t-info">
+          <div class="t-name"><svg class="t-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m8 3 4 8 5-5 5 15H2L8 3z"/></svg>夜爬华山</div>
+          <div class="t-desc">通宵攀登，在东峰迎接第一缕晨光，感受"奇险天下第一山"的震撼。</div>
+          <span class="t-tag">陕西 · 渭南</span>
+        </div>
+      </div>
+      <div class="travel-card reveal reveal-d1">
+        <div class="t-imgs single">
+          <img data-src="https://aka.doubaocdn.com/s/j1VCUxJCgs" src="https://aka.doubaocdn.com/s/j1VCUxJCgs" alt="游恩施">
+        </div>
+        <div class="t-info">
+          <div class="t-name"><svg class="t-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"/><path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c1 0 1.25 0 1.25 1v1c0 1-.25 2-1.25 2h-.75c-1.25 0-1.25.008-1.25 1.031V20c0 1 0 1 1 1z"/></svg>游恩施</div>
+          <div class="t-desc">穿行于峡谷与溶洞之间，在土家族的山水中读懂自然的鬼斧神工。</div>
+          <span class="t-tag">湖北 · 恩施</span>
+        </div>
+      </div>
+      <div class="travel-card reveal reveal-d2">
+        <div class="t-imgs">
+          <img data-src="https://aka.doubaocdn.com/s/fxGVUB0dVp" src="https://aka.doubaocdn.com/s/fxGVUB0dVp" alt="爬云际寺">
+          <img data-src="https://aka.doubaocdn.com/s/EjaXH19sp5" src="https://aka.doubaocdn.com/s/EjaXH19sp5" alt="爬云际寺">
+        </div>
+        <div class="t-info">
+          <div class="t-name"><svg class="t-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m8 3 4 8 5-5 5 15H2L8 3z"/></svg>爬云际寺</div>
+          <div class="t-desc">秦岭七十二峪之一，沿古道而上，在云际寺的晨钟里与山野对话。</div>
+          <span class="t-tag">陕西 · 秦岭</span>
+        </div>
+      </div>
+      <div class="travel-card reveal">
+        <div class="t-imgs">
+          <img data-src="https://aka.doubaocdn.com/s/bOVIqR9qHW" src="https://aka.doubaocdn.com/s/bOVIqR9qHW" alt="爬终南山">
+          <img data-src="https://aka.doubaocdn.com/s/hUWUtgVHdP" src="https://aka.doubaocdn.com/s/hUWUtgVHdP" alt="爬终南山">
+        </div>
+        <div class="t-info">
+          <div class="t-name"><svg class="t-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m8 3 4 8 5-5 5 15H2L8 3z"/></svg>爬终南山</div>
+          <div class="t-desc">"寿比南山"的终南捷径，登顶远眺关中平原，感受道家福地的宁静。</div>
+          <span class="t-tag">陕西 · 西安</span>
+        </div>
+      </div>
+      <div class="travel-card reveal reveal-d1">
+        <div class="t-imgs">
+          <img data-src="https://aka.doubaocdn.com/s/WrVogYUfT2" src="https://aka.doubaocdn.com/s/WrVogYUfT2" alt="登顶峨眉">
+          <img data-src="https://aka.doubaocdn.com/s/ClofdmZSAu" src="https://aka.doubaocdn.com/s/ClofdmZSAu" alt="登顶峨眉">
+        </div>
+        <div class="t-info">
+          <div class="t-name"><svg class="t-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m8 3 4 8 5-5 5 15H2L8 3z"/></svg>登顶峨眉</div>
+          <div class="t-desc">佛教四大名山之一，金顶之上云海翻涌，在普贤道场许下心愿。</div>
+          <span class="t-tag">四川 · 乐山</span>
+        </div>
+      </div>
+      <div class="travel-card reveal reveal-d2">
+        <div class="t-imgs">
+          <img data-src="https://aka.doubaocdn.com/s/letP6RwN3R" src="https://aka.doubaocdn.com/s/letP6RwN3R" alt="长沙橘子洲头">
+          <img data-src="https://aka.doubaocdn.com/s/t1ZTgeEXav" src="https://aka.doubaocdn.com/s/t1ZTgeEXav" alt="长沙橘子洲头">
+        </div>
+        <div class="t-info">
+          <div class="t-name"><svg class="t-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"/><path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c1 0 1.25 0 1.25 1v1c0 1-.25 2-1.25 2h-.75c-1.25 0-1.25.008-1.25 1.031V20c0 1 0 1 1 1z"/></svg>长沙橘子洲头</div>
+          <div class="t-desc">湘江之中的长岛，青年毛泽东雕像前，重温"问苍茫大地，谁主沉浮"的豪情。</div>
+          <span class="t-tag">湖南 · 长沙</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 生活痕迹 ==================== -->
+<section id="life" style="padding-top:20px;">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-code">06</span>
+      <h2 class="sec-title">生活痕迹</h2>
+      <div class="sec-line"></div>
+    </div>
+    <p class="reveal" style="color:var(--text-2);font-size:15px;font-weight:300;max-width:600px;">忙碌之外，那些温柔的日常碎片，才是生活本来的样子。</p>
+    <div class="life-grid">
+      <div class="life-card reveal">
+        <div class="life-img">
+          <img data-src="https://aka.doubaocdn.com/s/YVuDKvy1dx" src="https://aka.doubaocdn.com/s/YVuDKvy1dx" alt="宿舍的栀子花">
+        </div>
+        <div class="life-info">
+          <div class="life-date">DAILY · 01</div>
+          <div class="life-title">宿舍的栀子花</div>
+          <div class="life-desc">在宿舍养了一盆栀子花，每到花期，整个房间都弥漫着清甜的香气。科研再忙，回到宿舍看到它盛开，一天的疲惫都消散了。</div>
+          <div class="life-quote">"生活不止眼前的代码，还有宿舍阳台上的花开。"</div>
+        </div>
+      </div>
+      <div class="life-card reveal reveal-d1">
+        <div class="life-img">
+          <img data-src="https://aka.doubaocdn.com/s/UyvG3u9d74" src="https://aka.doubaocdn.com/s/UyvG3u9d74" alt="自己动手包粽子">
+        </div>
+        <div class="life-info">
+          <div class="life-date">FESTIVAL · 01</div>
+          <div class="life-title">研一·自己动手包粽子</div>
+          <div class="life-desc">研一的端午节，和同学一起买了粽叶、糯米和蜜枣，在宿舍动手包粽子。虽然形状各异，但自己包的粽子吃起来格外香甜，也成了研究生生活里温暖的记忆。</div>
+          <div class="life-quote">"仪式感，就是让某一天与其他日子不同。"</div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -875,7 +1147,7 @@ footer{
 <section id="honors" style="padding-top:20px;">
   <div class="wrap">
     <div class="sec-head reveal">
-      <span class="sec-code">05</span>
+      <span class="sec-code">07</span>
       <h2 class="sec-title">成果与荣誉</h2>
       <div class="sec-line"></div>
     </div>
@@ -1009,7 +1281,7 @@ footer{
   <div class="vision-bg" aria-hidden="true"></div>
   <div class="wrap vision-inner">
     <div class="sec-head reveal" style="justify-content:center;">
-      <span class="sec-code">06</span>
+      <span class="sec-code">08</span>
       <h2 class="sec-title">愿景与联系</h2>
       <div class="sec-line"></div>
     </div>
@@ -1146,12 +1418,12 @@ footer{
     bars.forEach(fillBar);
   }
 
-  /* ---- 证书 Lightbox ---- */
+  /* ---- 图片 Lightbox（证书 + 照片墙 + 游玩 + 生活） ---- */
   var lightbox = document.getElementById('lightbox');
   var lbImg = document.getElementById('lbImg');
   var lbCaption = document.getElementById('lbCaption');
   var lbClose = document.getElementById('lbClose');
-  document.querySelectorAll('.cert-item').forEach(function(item){
+  document.querySelectorAll('[data-src]').forEach(function(item){
     item.addEventListener('click', function(){
       lbImg.src = item.getAttribute('data-src');
       lbImg.alt = item.getAttribute('data-cap') || '';
