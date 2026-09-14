@@ -478,29 +478,33 @@ section{padding:96px 0;position:relative;z-index:2;}
    照片墙（学生工作 / 通用）
    ============================================================ */
 .photo-wall{
-  display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:28px;
+  display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:16px;
 }
+.photo-group-title{
+  font-family:var(--font-mono);font-size:13px;color:var(--cyan);
+  letter-spacing:.15em;margin:36px 0 14px;padding-left:12px;
+  border-left:3px solid var(--cyan);display:flex;align-items:center;gap:10px;
+}
+.photo-group-title .pg-count{color:var(--text-3);font-size:11px;}
 .photo-item{
   position:relative;border-radius:10px;overflow:hidden;
   border:1px solid var(--line);background:var(--bg-2);
   cursor:pointer;transition:transform .3s var(--ease),border-color .3s,box-shadow .3s;
-  aspect-ratio:4/3;
+  display:flex;flex-direction:column;
 }
-.photo-item.wide{grid-column:span 2;aspect-ratio:8/3;}
-.photo-item.tall{grid-row:span 2;aspect-ratio:3/4;}
+.photo-item.wide{grid-column:span 2;}
+.photo-item.wide img{aspect-ratio:8/3;}
 .photo-item:hover{
   transform:translateY(-3px);border-color:var(--line-strong);
   box-shadow:0 10px 28px rgba(46,230,200,.18);
 }
-.photo-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s var(--ease);}
-.photo-item:hover img{transform:scale(1.06);}
+.photo-item img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;transition:transform .5s var(--ease);}
+.photo-item:hover img{transform:scale(1.05);}
 .photo-item .photo-cap{
-  position:absolute;left:0;right:0;bottom:0;padding:8px 12px;
-  background:linear-gradient(180deg,transparent,rgba(4,8,15,.9));
-  font-size:12px;color:var(--cyan-soft);letter-spacing:.03em;
-  opacity:0;transition:opacity .3s;
+  padding:9px 12px;font-size:12.5px;color:var(--cyan-soft);
+  letter-spacing:.03em;background:rgba(46,230,200,.04);
+  border-top:1px solid var(--line);text-align:center;font-weight:400;
 }
-.photo-item:hover .photo-cap{opacity:1;}
 
 /* ============================================================
    游玩经历
@@ -732,7 +736,7 @@ footer{
           <div class="hstat-ico">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>
           </div>
-          <div><b data-count="10">0</b><span>荣誉奖项 · 累计获得</span></div>
+          <div><b data-count="12">0</b><span>荣誉奖项 · 累计获得</span></div>
           <div class="misc">HONOR.SYS</div>
         </div>
         <div class="hstat">
@@ -992,57 +996,57 @@ footer{
       <div class="sec-line"></div>
     </div>
     <p class="reveal" style="color:var(--text-2);font-size:14px;font-weight:300;margin-bottom:8px;">点击照片可放大查看</p>
+
+    <div class="photo-group-title reveal">研一 · 2024—2025 <span class="pg-count">/ 8 张</span></div>
     <div class="photo-wall">
-      <div class="photo-item wide reveal" data-src="https://aka.doubaocdn.com/s/xKIRUwYpR3" data-cap="三下乡优秀实践团队">
-        <img src="https://aka.doubaocdn.com/s/xKIRUwYpR3" alt="三下乡优秀实践团队"><div class="photo-cap">三下乡优秀实践团队</div>
+      <div class="photo-item reveal" data-src="https://aka.doubaocdn.com/s/RcfpSX4qYq" data-cap="三下乡调研路上遇大水">
+        <img src="https://aka.doubaocdn.com/s/RcfpSX4qYq" alt="三下乡调研路上遇大水"><div class="photo-cap">三下乡调研路上遇大水</div>
       </div>
-      <div class="photo-item reveal reveal-d1" data-src="https://aka.doubaocdn.com/s/HdZY9x0nqg" data-cap="三下乡优秀成果">
-        <img src="https://aka.doubaocdn.com/s/HdZY9x0nqg" alt="三下乡优秀成果"><div class="photo-cap">三下乡优秀成果</div>
-      </div>
-      <div class="photo-item reveal reveal-d2" data-src="https://aka.doubaocdn.com/s/RcfpSX4qYq" data-cap="研一·三下乡调研路上遇大水">
-        <img src="https://aka.doubaocdn.com/s/RcfpSX4qYq" alt="三下乡调研路上遇大水"><div class="photo-cap">三下乡调研路上</div>
-      </div>
-      <div class="photo-item reveal" data-src="https://aka.doubaocdn.com/s/epEbygtZci" data-cap="研一·暑期三下乡合照">
+      <div class="photo-item reveal reveal-d1" data-src="https://aka.doubaocdn.com/s/epEbygtZci" data-cap="暑期三下乡合照">
         <img src="https://aka.doubaocdn.com/s/epEbygtZci" alt="暑期三下乡合照"><div class="photo-cap">暑期三下乡合照</div>
       </div>
-      <div class="photo-item wide reveal reveal-d1" data-src="https://aka.doubaocdn.com/s/AGJDr7pzuE" data-cap="研一·研会合照">
-        <img src="https://aka.doubaocdn.com/s/AGJDr7pzuE" alt="研一研会合照"><div class="photo-cap">研一研会合照</div>
+      <div class="photo-item wide reveal reveal-d2" data-src="https://aka.doubaocdn.com/s/AGJDr7pzuE" data-cap="研会合照">
+        <img src="https://aka.doubaocdn.com/s/AGJDr7pzuE" alt="研会合照"><div class="photo-cap">研会合照</div>
       </div>
-      <div class="photo-item reveal reveal-d2" data-src="https://aka.doubaocdn.com/s/y7YPt9vD69" data-cap="研一·三校联动合照">
-        <img src="https://aka.doubaocdn.com/s/y7YPt9vD69" alt="研一三校联动合照"><div class="photo-cap">研一三校联动</div>
+      <div class="photo-item reveal" data-src="https://aka.doubaocdn.com/s/y7YPt9vD69" data-cap="三校联动合照">
+        <img src="https://aka.doubaocdn.com/s/y7YPt9vD69" alt="三校联动合照"><div class="photo-cap">三校联动合照</div>
       </div>
-      <div class="photo-item reveal" data-src="https://aka.doubaocdn.com/s/freSTMtouR" data-cap="研一·青羽杯羽毛球赛工作人员">
-        <img src="https://aka.doubaocdn.com/s/freSTMtouR" alt="青羽杯羽毛球赛"><div class="photo-cap">青羽杯工作人员</div>
+      <div class="photo-item reveal reveal-d1" data-src="https://aka.doubaocdn.com/s/freSTMtouR" data-cap="第一届&quot;青羽杯&quot;羽毛球赛工作人员合照">
+        <img src="https://aka.doubaocdn.com/s/freSTMtouR" alt="青羽杯羽毛球赛工作人员合照"><div class="photo-cap">第一届&quot;青羽杯&quot;羽毛球赛工作人员合照</div>
       </div>
-      <div class="photo-item reveal reveal-d1" data-src="https://aka.doubaocdn.com/s/S2oY4xC4H7" data-cap="研一·艺术党课群演">
+      <div class="photo-item reveal reveal-d2" data-src="https://aka.doubaocdn.com/s/S2oY4xC4H7" data-cap="艺术党课群演">
         <img src="https://aka.doubaocdn.com/s/S2oY4xC4H7" alt="艺术党课群演"><div class="photo-cap">艺术党课群演</div>
       </div>
-      <div class="photo-item reveal reveal-d2" data-src="https://aka.doubaocdn.com/s/0aho2ybBGg" data-cap="研一·艺术党课群演">
-        <img src="https://aka.doubaocdn.com/s/0aho2ybBGg" alt="艺术党课群演2"><div class="photo-cap">艺术党课群演</div>
-      </div>
-      <div class="photo-item wide reveal" data-src="https://aka.doubaocdn.com/s/b5KkDRq7sf" data-cap="研二·三校联动发言">
-        <img src="https://aka.doubaocdn.com/s/b5KkDRq7sf" alt="研二三校联动发言"><div class="photo-cap">研二三校联动发言</div>
-      </div>
-      <div class="photo-item reveal reveal-d1" data-src="https://aka.doubaocdn.com/s/XRJFPZofxO" data-cap="研二·三校联动合照">
-        <img src="https://aka.doubaocdn.com/s/XRJFPZofxO" alt="研二三校联动合照"><div class="photo-cap">研二三校联动</div>
-      </div>
-      <div class="photo-item reveal reveal-d2" data-src="https://aka.doubaocdn.com/s/224vVX24BT" data-cap="研二·培训会">
-        <img src="https://aka.doubaocdn.com/s/224vVX24BT" alt="研二培训会"><div class="photo-cap">培训会</div>
-      </div>
-      <div class="photo-item reveal" data-src="https://aka.doubaocdn.com/s/1lCkJphtG2" data-cap="研二·就业夜校第一期">
-        <img src="https://aka.doubaocdn.com/s/1lCkJphtG2" alt="就业夜校第一期"><div class="photo-cap">就业夜校第一期</div>
-      </div>
-      <div class="photo-item reveal reveal-d1" data-src="https://aka.doubaocdn.com/s/YSA7Dga5PZ" data-cap="研二·就业夜校第二期">
-        <img src="https://aka.doubaocdn.com/s/YSA7Dga5PZ" alt="就业夜校第二期"><div class="photo-cap">就业夜校第二期</div>
-      </div>
-      <div class="photo-item reveal reveal-d2" data-src="https://aka.doubaocdn.com/s/YcYKhIic1A" data-cap="研二·就业夜校第五期">
-        <img src="https://aka.doubaocdn.com/s/YcYKhIic1A" alt="就业夜校第五期"><div class="photo-cap">就业夜校第五期</div>
-      </div>
-      <div class="photo-item reveal" data-src="https://aka.doubaocdn.com/s/UaiCL4FhK8" data-cap="研二·毕业歌会">
-        <img src="https://aka.doubaocdn.com/s/UaiCL4FhK8" alt="毕业歌会"><div class="photo-cap">毕业歌会</div>
+      <div class="photo-item reveal" data-src="https://aka.doubaocdn.com/s/0aho2ybBGg" data-cap="艺术党课群演">
+        <img src="https://aka.doubaocdn.com/s/0aho2ybBGg" alt="艺术党课群演"><div class="photo-cap">艺术党课群演</div>
       </div>
       <div class="photo-item reveal reveal-d1" data-src="https://aka.doubaocdn.com/s/pLvDUwkB3p" data-cap="调研动员会">
         <img src="https://aka.doubaocdn.com/s/pLvDUwkB3p" alt="调研动员会"><div class="photo-cap">调研动员会</div>
+      </div>
+    </div>
+
+    <div class="photo-group-title reveal">研二 · 2025—2026 <span class="pg-count">/ 7 张</span></div>
+    <div class="photo-wall">
+      <div class="photo-item wide reveal" data-src="https://aka.doubaocdn.com/s/b5KkDRq7sf" data-cap="三校联动发言">
+        <img src="https://aka.doubaocdn.com/s/b5KkDRq7sf" alt="三校联动发言"><div class="photo-cap">三校联动发言</div>
+      </div>
+      <div class="photo-item reveal reveal-d1" data-src="https://aka.doubaocdn.com/s/XRJFPZofxO" data-cap="三校联动合照">
+        <img src="https://aka.doubaocdn.com/s/XRJFPZofxO" alt="三校联动合照"><div class="photo-cap">三校联动合照</div>
+      </div>
+      <div class="photo-item reveal reveal-d2" data-src="https://aka.doubaocdn.com/s/224vVX24BT" data-cap="学生骨干培训会">
+        <img src="https://aka.doubaocdn.com/s/224vVX24BT" alt="培训会"><div class="photo-cap">学生骨干培训会</div>
+      </div>
+      <div class="photo-item reveal" data-src="https://aka.doubaocdn.com/s/1lCkJphtG2" data-cap="就业夜校第一期">
+        <img src="https://aka.doubaocdn.com/s/1lCkJphtG2" alt="就业夜校第一期"><div class="photo-cap">就业夜校第一期</div>
+      </div>
+      <div class="photo-item reveal reveal-d1" data-src="https://aka.doubaocdn.com/s/YSA7Dga5PZ" data-cap="就业夜校第二期">
+        <img src="https://aka.doubaocdn.com/s/YSA7Dga5PZ" alt="就业夜校第二期"><div class="photo-cap">就业夜校第二期</div>
+      </div>
+      <div class="photo-item reveal reveal-d2" data-src="https://aka.doubaocdn.com/s/YcYKhIic1A" data-cap="就业夜校第五期">
+        <img src="https://aka.doubaocdn.com/s/YcYKhIic1A" alt="就业夜校第五期"><div class="photo-cap">就业夜校第五期</div>
+      </div>
+      <div class="photo-item reveal" data-src="https://aka.doubaocdn.com/s/UaiCL4FhK8" data-cap="毕业歌会">
+        <img src="https://aka.doubaocdn.com/s/UaiCL4FhK8" alt="毕业歌会"><div class="photo-cap">毕业歌会</div>
       </div>
     </div>
   </div>
@@ -1143,9 +1147,9 @@ footer{
         </div>
         <div class="life-info">
           <div class="life-date">DAILY · 01</div>
-          <div class="life-title">宿舍的栀子花</div>
-          <div class="life-desc">在宿舍养了一盆栀子花，每到花期，整个房间都弥漫着清甜的香气。科研再忙，回到宿舍看到它盛开，一天的疲惫都消散了。</div>
-          <div class="life-quote">"生活不止眼前的代码，还有宿舍阳台上的花开。"</div>
+          <div class="life-title">宿舍的几盆栀子花</div>
+          <div class="life-desc">在宿舍养了几盆栀子花，才刚开始养护，每天浇水、晒太阳，看着它们慢慢抽芽长叶，是科研之余最治愈的小事。</div>
+          <div class="life-quote">"生活不止眼前的代码，还有宿舍阳台上慢慢生长的绿意。"</div>
         </div>
       </div>
       <div class="life-card reveal reveal-d1">
@@ -1154,8 +1158,8 @@ footer{
         </div>
         <div class="life-info">
           <div class="life-date">FESTIVAL · 01</div>
-          <div class="life-title">研一·自己动手包粽子</div>
-          <div class="life-desc">研一的端午节，和同学一起买了粽叶、糯米和蜜枣，在宿舍动手包粽子。虽然形状各异，但自己包的粽子吃起来格外香甜，也成了研究生生活里温暖的记忆。</div>
+          <div class="life-title">自己动手包粽子</div>
+          <div class="life-desc">研一的端午节，和家人一起包粽子，向老妈请教手法。虽然包得歪歪扭扭，但亲手包的粽子吃起来格外香甜，家人的陪伴让节日更有温度。</div>
           <div class="life-quote">"仪式感，就是让某一天与其他日子不同。"</div>
         </div>
       </div>
@@ -1173,7 +1177,7 @@ footer{
     </div>
     <div class="honor-grid">
       <div class="card h-card reveal">
-        <div class="h-num" data-count="10">0</div>
+        <div class="h-num" data-count="12">0</div>
         <div class="h-unit">项 · 荣誉与资质</div>
         <h4>学术与综合荣誉</h4>
         <p>涵盖奖学金、竞赛、团学表彰等多个维度</p>
@@ -1266,6 +1270,14 @@ footer{
       <div class="cert-item reveal reveal-d1" data-src="https://aka.doubaocdn.com/s/RZTyHi4nwi" data-cap="学生骨干训练营结业 · 2025.08">
         <img src="https://aka.doubaocdn.com/s/RZTyHi4nwi" alt="学生骨干训练营结业证书">
         <div class="cert-cap">学生骨干训练营<span class="cert-year">2025</span></div>
+      </div>
+      <div class="cert-item reveal" data-src="https://aka.doubaocdn.com/s/xKIRUwYpR3" data-cap="暑期三下乡优秀实践团队 · 2025">
+        <img src="https://aka.doubaocdn.com/s/xKIRUwYpR3" alt="三下乡优秀实践团队">
+        <div class="cert-cap">三下乡优秀实践团队<span class="cert-year">2025</span></div>
+      </div>
+      <div class="cert-item reveal reveal-d1" data-src="https://aka.doubaocdn.com/s/HdZY9x0nqg" data-cap="暑期三下乡优秀成果 · 2025">
+        <img src="https://aka.doubaocdn.com/s/HdZY9x0nqg" alt="三下乡优秀成果">
+        <div class="cert-cap">三下乡优秀成果<span class="cert-year">2025</span></div>
       </div>
       <div class="cert-item reveal reveal-d2" data-src="https://aka.doubaocdn.com/s/oBBoX7wKiS" data-cap="烟建奖学金 · 2022.11">
         <img src="https://aka.doubaocdn.com/s/oBBoX7wKiS" alt="烟建奖学金">
