@@ -296,6 +296,20 @@ section{padding:96px 0;position:relative;z-index:2;}
 .fact .f-ico{width:38px;height:38px;flex:none;border-radius:9px;background:rgba(46,230,200,.09);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;color:var(--cyan);}
 .fact .f-lab{display:block;font-size:11.5px;color:var(--text-3);letter-spacing:.1em;}
 .fact .f-val{display:block;font-size:15px;color:var(--text);letter-spacing:.02em;}
+.about-actions{margin-top:22px;}
+.btn-download{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:11px 22px;border-radius:8px;
+  border:1px solid var(--cyan);color:var(--cyan);
+  font-size:13.5px;font-weight:500;letter-spacing:.06em;
+  text-decoration:none;background:rgba(46,230,200,.05);
+  transition:all .3s var(--ease);cursor:pointer;
+}
+.btn-download:hover{
+  background:var(--cyan);color:var(--bg);
+  box-shadow:0 6px 20px rgba(46,230,200,.35);
+  transform:translateY(-2px);
+}
 
 /* ============================================================
    6. 教育 / 成长时间线
@@ -785,6 +799,12 @@ footer{
             <div class="f-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9.5" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
             <div><span class="f-lab">身份标签</span><span class="f-val">研会主席团 · 省学联 · 校两办</span></div>
           </div>
+        </div>
+        <div class="about-actions">
+          <a class="btn-download" href="https://aka.doubaocdn.com/s/KDqUywBc4n" download="胡浩中文成绩单.pdf" target="_blank" rel="noopener">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            下载成绩单（PDF）
+          </a>
         </div>
       </div>
     </div>
